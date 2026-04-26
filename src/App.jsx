@@ -4,27 +4,27 @@ import { useState, useEffect } from 'react'
 const SITE = {
   projectTitle: 'OptiCode',
   projectSubtitle: 'An AI-Powered Intelligent Code Analysis Platform for Enhancing Computer Science Education',
-  projectTagline: 'Bridging the gap between AI-generated code and genuine understanding.',
-  conferenceTag: 'ECAI 2026 • Paper #9689',
-  groupNo: '25-26J-XXX',
-  institution: 'Sri Lanka Institute of Information Technology (SLIIT)',
-  department: 'Department of Information Technology',
+  projectTagline: 'Providing educators and learners with actionable, real-time feedback on code comprehension and technical readiness.',
+  conferenceTag: 'IEEE 2026',
+  groupNo: '25-26J-364',
+  institution: 'Sri Lanka Institute of Information Technology',
+  department: 'Dept. of Information Technology',
   cdapUrl: 'http://cdap.sliit.lk/',
 
-  abstract: `The increasing reliance of computer science students on AI-generated code without adequate understanding of underlying concepts presents a significant pedagogical challenge. Students often submit functionally correct code while remaining unable to explain the algorithms, data structures, or design patterns involved. OptiCode is a multi-component intelligent code analysis platform that integrates four AI-powered modules to provide actionable, real-time feedback on code comprehension and technical readiness.`,
+  abstract: 'The increasing reliance of computer science students on AI-generated code without adequate understanding of underlying concepts presents a significant pedagogical challenge. Students often produce functionally correct solutions while lacking the ability to explain algorithms, data structures, or design patterns, leaving them underprepared for technical assessments. This paper presents OptiCode, a multi-component intelligent code analysis platform that integrates four AI-powered modules to provide educators and learners with actionable, real-time feedback on code comprehension and technical readiness.',
 
-  researchProblem: `Traditional learning platforms such as LeetCode assess functional correctness but not conceptual understanding. Static linters detect syntactic issues without identifying higher-order concepts such as Recursion or the Observer Pattern. Students frequently submit AI-generated solutions without developing an understanding of embedded algorithmic concepts, producing graduates who struggle to explain time complexity, identify design patterns, or justify architectural decisions during technical interviews.`,
+  researchProblem: 'The proliferation of AI code generation tools such as GitHub Copilot and ChatGPT has fundamentally altered how students interact with programming assignments. A substantial proportion of undergraduate computer science students now submit AI-generated solutions without developing an understanding of the embedded algorithmic concepts. This behavior produces graduates who can write syntactically correct programs yet struggle to explain time complexity, identify design patterns, or justify architectural decisions during technical interviews.',
 
-  researchGap: `Existing automated code analysis tools focus on code summarisation and comment generation but do not map constructs to named CS concepts. LLM-based methods demonstrate strong code understanding but are prone to hallucination and ignore structural precision. Intelligent tutoring systems require extensive manual knowledge engineering and lack concept-level diagnostic feedback suitable for programming education.`,
+  researchGap: 'Traditional learning platforms such as LeetCode assess functional correctness but not conceptual understanding. Static linters detect syntactic issues without identifying higher-order concepts such as Recursion or the Observer Pattern. Existing automated code analysis tools focus on code summarization and comment generation but do not map constructs to named CS concepts. Recent LLM-based methods demonstrate strong code understanding capabilities but remain prone to hallucination and ignore structural precision.',
 
   objectives: [
-    'Automatically extract and explain CS concepts present in student-submitted code',
-    'Identify and track conceptual weaknesses in student knowledge over time',
-    'Improve code quality through intelligent, risk-aware refactoring',
+    'Automatically extract and explain CS concepts in student code',
+    'Identify and track conceptual weaknesses over time',
+    'Improve code quality through intelligent refactoring',
     'Simulate technical interviews with multimodal performance scoring',
   ],
 
-  methodology: `OptiCode is implemented as a distributed microservice architecture. A React/Vite frontend communicates with a Node.js/Express API gateway backed by MongoDB. Four specialised AI services, each exposing a REST API, handle domain-specific inference tasks. The gateway enforces JWT-based authentication and rate limiting. A hybrid AST+LLM pipeline grounds language model inference with deterministic structural analysis, achieving macro F1 = 0.83 — outperforming the LLM-only baseline by 16.9%.`,
+  methodology: 'OptiCode is implemented as a distributed microservice architecture. A React/Vite frontend communicates with a Node.js/Express API gateway backed by MongoDB. Four specialized AI services, each exposing a REST API, handle domain-specific inference tasks. The gateway enforces JWT-based authentication and rate limiting. A hybrid AST+LLM pipeline grounds language model inference with deterministic structural analysis, achieving macro F1 = 0.85 — outperforming the LLM-only baseline by 16.4%.',
 
   technologies: [
     { name: 'React / Vite', cat: 'Frontend' },
@@ -35,12 +35,11 @@ const SITE = {
     { name: 'Google Gemini 2.0 Flash', cat: 'LLM' },
     { name: 'Python AST Module', cat: 'Static Analysis' },
     { name: 'Random Forest', cat: 'ML Model' },
-    { name: 'Qwen (LoRA fine-tuned)', cat: 'Generative Model' },
-    { name: 'CodeT5-base', cat: 'Code Model' },
-    { name: 'OpenCV / dlib', cat: 'Computer Vision' },
-    { name: 'LiveKit (WebRTC)', cat: 'Real-time Comm.' },
-    { name: 'JWT Auth', cat: 'Security' },
-    { name: 'Hugging Face Spaces', cat: 'Model Hosting' },
+    { name: 'Bayesian Knowledge Tracing (BKT)', cat: 'Knowledge Modeling' },
+    { name: 'Mini-Xception', cat: 'Computer Vision' },
+    { name: 'OpenCV', cat: 'Computer Vision' },
+    { name: 'AssemblyAI / Cartesia', cat: 'ASR / TTS' },
+    { name: 'Google Gemini 2.5 Flash', cat: 'LLM' },
   ],
 
   components: [
@@ -48,103 +47,103 @@ const SITE = {
       id: 'concept-extractor',
       number: '01',
       title: 'Code Concept Extractor',
-      owner: 'Haritha Himansha',
+      owner: 'Mr. Haritha Himansha',
       color: '#0066cc',
       icon: '⬡',
       tagline: 'Hybrid AST + LLM Pipeline',
-      description: 'Automatically identifies and explains every CS concept present in a submitted code snippet or project folder. A three-stage pipeline combines deterministic AST analysis with Google Gemini 2.0 Flash to achieve macro F1 = 0.83, outperforming an LLM-only baseline by 16.9%.',
+      description: 'Addresses the gap by identifying and explaining high-level concepts such as algorithms, data structures, and design patterns present in source code. A three-stage pipeline combines deterministic static analysis with semantic inference to achieve macro F1 = 0.85, outperforming an LLM-only baseline by 16.4%.',
       highlights: [
-        'Stage 1: Python AST detects classes, functions, design patterns (Singleton, Observer, Factory), recursion, and control-flow constructs with high precision.',
-        'Stage 2: AST findings are injected as confirmed context into a Gemini prompt, enabling semantic augmentation without hallucination.',
-        'Stage 3: Post-merge confidence fusion — hybrid-confirmed concepts receive a +0.10 boost; AST-only concepts are recovered as false-negative patches.',
-        'Calibrated confidence scoring (ECE = 0.08) ensures concepts assigned 0.80 confidence are correct ~80% of the time.',
+        'Stage 1: Python AST performs structural analysis to identify classes, functions, design pattern signatures (Singleton, Observer, Factory), and control flow constructs with high precision.',
+        'Stage 2: Structural findings are injected as confirmed context into a prompt sent to Google Gemini 2.0 Flash.',
+        'Stage 3: Post-merge confidence fusion — concepts confirmed by both LLM and AST receive a confidence boost of +0.10. AST-detected concepts absent from the LLM are appended.',
+        'Calibrated confidence scoring achieves the lowest Expected Calibration Error (ECE = 0.07).',
       ],
       metrics: [
-        { label: 'Macro F1', value: '0.83' },
-        { label: 'vs LLM-only', value: '+16.9%' },
-        { label: 'ECE', value: '0.08' },
-        { label: 'Precision', value: '0.84' },
+        { label: 'Macro F1', value: '0.85' },
+        { label: 'vs LLM-only', value: '+16.4%' },
+        { label: 'ECE', value: '0.07' },
+        { label: 'Precision', value: '0.86' },
       ],
       tech: ['FastAPI (Port 8000)', 'Python AST', 'Google Gemini 2.0 Flash', 'MongoDB'],
     },
     {
       id: 'skill-weakness',
       number: '02',
-      title: 'Skill Assessment & Weakness Detector',
-      owner: 'Thilina Sandamal',
+      title: 'Adaptive Weakness Detector',
+      owner: 'Mr. Thilina Sandamal',
       color: '#1a7f4f',
       icon: '◈',
       tagline: 'Adaptive Learning System',
-      description: 'Predicts a student\'s real coding skill level from a structured 30-question assessment and detects recurring conceptual gaps through static code analysis and typing behaviour patterns during live coding sessions.',
+      description: 'Analyzes extraction histories over multiple sessions to identify recurring gaps. It uses a unified adaptive framework that integrates real-time weakness detection, targeted task generation, and performance-driven progression.',
       highlights: [
-        'Skill Prediction: Random Forest Classifier trained on category-based scores across Foundational Coding, Problem Solving, Workflow, Tools, and Computational Thinking.',
-        'Multi-output Random Forest Classifier detects weakness labels including syntax errors, infinite loops, missing base cases, and idle/stuck behaviour.',
-        'AST-based feature extraction captures loop counts, recursion patterns, function counts, and lines of code during live sessions.',
-        'Adaptive Task Generation: Qwen model fine-tuned with LoRA on task–prompt pairs generates coding tasks calibrated to the student\'s predicted skill level.',
+        'Skill Prediction: Random Forest classifier predicts the learner\'s level (Beginner, Intermediate, Advanced).',
+        'Hybrid Weakness Detection: Combines AST-based structural features, execution output comparison, rule-based checks, and behavioral signals (e.g., idle time).',
+        'Knowledge Modelling: Learner mastery is modelled using Bayesian Knowledge Tracing (BKT), updated after each interaction.',
+        'Identifies 8 detectable weakness types, including syntax_error, infinite_loop, logic_error, and missing_base_case.',
       ],
       metrics: [
-        { label: 'Skill Levels', value: '3' },
-        { label: 'Assessment Qs', value: '30' },
-        { label: 'Weakness Labels', value: '5+' },
+        { label: 'Hybrid F1', value: '0.92' },
         { label: 'Latency Target', value: '<3s' },
+        { label: 'Weakness Types', value: '8' },
+        { label: 'Pass Threshold', value: '≥ 0.85' },
       ],
-      tech: ['Flask (Port 8001)', 'Random Forest', 'Qwen (LoRA)', 'Hugging Face Spaces', 'Python AST'],
+      tech: ['Flask (Port 8001)', 'Random Forest', 'BKT', 'Python AST'],
     },
     {
       id: 'refactoring',
       number: '03',
-      title: 'Code Refactoring & Risk Analyser',
-      owner: 'Ashani Hettiarachchi',
+      title: 'Code Refactoring and Risk Analyzer',
+      owner: 'Ms. Ashani Hettiarachchi',
       color: '#b45309',
       icon: '◇',
       tagline: 'Safe, Explainable Refactoring',
-      description: 'A two-stage refactoring system combining a fine-tuned CodeT5-base model and an LLM to generate refactored code, analyse risks, and determine whether transformations are safe to apply — with full educational rationale.',
+      description: 'Addresses suboptimal code by identifying refactoring opportunities through AST-based analysis while quantifying the associated transformation risk. Integrates an AI-driven explanation module providing rationale for decisions.',
       highlights: [
-        'Stage 1 (CodeT5-base): Fine-tuned model improves code readability, eliminates redundant logic, and enforces best practices without altering expected functionality.',
-        'Stage 2 (LLM Risk Analysis): Deep inspection checks for logical behaviour changes, potential runtime errors, performance regressions, and security risks.',
-        'AST-based semantic diffing compares original vs. refactored logic paths to detect unsafe transformations at the control-flow level.',
-        'Risk results are categorised (Low/Medium/High), explained with reasons, and visualised — supporting Explainable AI (XAI) principles.',
+        'Stage 1: AST parsing decomposes programs into structural components, finding deep-rooted anti-patterns like deeply nested loops and bloated classes.',
+        'Stage 3: Safe Transformation ensures behavioral preservation by comparing ASTs of the original and refactored code.',
+        'Risk Classification: Candidate transformations are assigned a risk level of low, medium, or high based on scope of change, coupling metrics, and test coverage.',
+        'Gamified analytics dashboard tracks technical debt using metrics like cyclomatic complexity and maintainability index.',
       ],
       metrics: [
-        { label: 'Risk Levels', value: '3' },
+        { label: 'User Satisfaction', value: '90.7%' },
         { label: 'Valid Output', value: '100%' },
-        { label: 'Risk Types', value: '4+' },
-        { label: 'Approach', value: '2-Stage' },
+        { label: 'Risk Levels', value: '3' },
+        { label: 'Participants', value: '43' },
       ],
-      tech: ['Flask (Port 8002)', 'CodeT5-base', 'LLM', 'Python AST', 'MongoDB'],
+      tech: ['Flask (Port 8002)', 'Python AST', 'Rule-based Engine'],
     },
     {
       id: 'interview-sim',
       number: '04',
       title: 'AI Interview Simulator',
-      owner: 'Navinda Viraj',
+      owner: 'Mr. Navinda Viraj',
       color: '#7c3aed',
       icon: '○',
-      tagline: 'Multimodal Interview Scoring',
-      description: 'Simulates realistic technical interviews using AI-driven questioning, real-time facial emotion recognition across 7 affect categories, and NLP-based scoring of spoken responses — producing personalised performance reports.',
+      tagline: 'Multimodal Performance Scoring',
+      description: 'Enables real-time speech interaction, continuous facial emotion analysis, and adaptive questioning based on candidate performance. Generates personalized follow-up questions utilizing the Weakness Detection module.',
       highlights: [
-        'LiveKit (WebRTC) enables real-time audio/video communication. An AI Voice Agent interviews candidates via Speech-to-Text → LLM processing → Text-to-Speech.',
-        'Computer Vision (OpenCV + dlib PyTorch landmark model) classifies emotional state across 7 categories: neutral, focused, confused, anxious, confident, distracted, and engaged.',
-        'NLP scoring module assesses technical accuracy, completeness, and terminology precision of responses.',
-        'Final composite score: content (weight 0.7) + affect profile (weight 0.3). Personalised reports stored in MongoDB.',
+        'Live speech-based interview interaction using ASR (AssemblyAI), TTS (Cartesia), and Gemini 2.5 Flash for dialogue management.',
+        'Real-time emotion recognition using OpenCV and a Mini-Xception model tracking 7 affect categories: neutral, focused, confused, anxious, confident, distracted, and engaged.',
+        'NLP scoring module assesses technical accuracy, completeness, and terminology precision.',
+        'Final score is computed as a weighted sum: 0.7 × S_content + 0.3 × S_affect.',
       ],
       metrics: [
         { label: 'Affect Categories', value: '7' },
         { label: 'Content Weight', value: '0.7' },
         { label: 'Affect Weight', value: '0.3' },
-        { label: 'Mode', value: 'Real-time' },
+        { label: 'Model Latency', value: '18 ms' },
       ],
-      tech: ['Flask (Port 8003)', 'LiveKit WebRTC', 'OpenCV / dlib', 'NLP Scoring', 'MongoDB'],
+      tech: ['Flask (Port 8003)', 'AssemblyAI / Cartesia', 'OpenCV / Mini-Xception', 'Gemini 2.5 Flash'],
     },
   ],
 
   milestones: [
-    { id: 1, title: 'Project Proposal', date: 'Aug 2024', status: 'done', desc: 'Initial research proposal submitted. Research gap identified, scope defined, and methodology outlined.' },
-    { id: 2, title: 'Progress Presentation I', date: 'Nov 2024', status: 'done', desc: 'System architecture finalised. Individual component designs presented. Hybrid AST+LLM pipeline prototyped.' },
-    { id: 3, title: 'Progress Presentation II', date: 'Mar 2025', status: 'done', desc: 'Core components implemented. Evaluation dataset constructed (15 samples). Preliminary F1 = 0.83 achieved.' },
-    { id: 4, title: 'Research Paper Submission', date: 'Mar 2025', status: 'done', desc: 'Paper submitted to IEEE TENSYMP 2026 (Paper ID: 1571266302) and ECAI 2026 (Paper #9689 — provisionally accepted).' },
-    { id: 5, title: 'Final Assessment', date: 'Jun 2025', status: 'upcoming', desc: 'Complete platform integration, multi-language benchmarking, and longitudinal user study at SLIIT.' },
-    { id: 6, title: 'Viva', date: 'Jul 2025', status: 'upcoming', desc: 'Defence of research contributions and live demonstration of the OptiCode platform.' },
+    { id: 1, title: 'Project Proposal', date: 'Aug 2025', status: 'done', desc: 'Initial research proposal submitted. Research gap identified, scope defined, and methodology outlined.' },
+    { id: 2, title: 'Progress Presentation I', date: 'Nov 2025', status: 'done', desc: 'System architecture finalized. Individual component designs presented.' },
+    { id: 3, title: 'Progress Presentation II', date: 'Mar 2026', status: 'done', desc: 'Core components implemented. Experimental evaluation dataset constructed.' },
+    { id: 4, title: 'Research Paper Submission', date: 'Apr 2026', status: 'done', desc: 'Paper submitted and finalized formatting matching IEEE formatting conventions.' },
+    { id: 5, title: 'Final Assessment', date: 'Jun 2026', status: 'upcoming', desc: 'Complete platform integration, multi-language benchmarking, and longitudinal studies.' },
+    { id: 6, title: 'Viva', date: 'Jul 2026', status: 'upcoming', desc: 'Defense of research contributions and live demonstration of the OptiCode platform.' },
   ],
 
   documents: [
@@ -152,20 +151,20 @@ const SITE = {
     { title: 'Proposal Document', type: 'PDF', status: 'available', url: '#' },
     { title: 'Progress Report I', type: 'PDF', status: 'available', url: '#' },
     { title: 'Progress Report II', type: 'PDF', status: 'available', url: '#' },
-    { title: 'Research Paper (ECAI 2026)', type: 'PDF', status: 'available', url: '#' },
+    { title: 'Research Paper (OptiCode)', type: 'PDF', status: 'available', url: '#' },
     { title: 'Final Report', type: 'PDF', status: 'pending', url: '#' },
   ],
 
   presentations: [
-    { title: 'Proposal Presentation', date: 'Aug 2024', status: 'available', url: '#' },
-    { title: 'Progress Presentation I', date: 'Nov 2024', status: 'available', url: '#' },
-    { title: 'Progress Presentation II', date: 'Mar 2025', status: 'available', url: '#' },
-    { title: 'Final Presentation', date: 'Jun 2025', status: 'pending', url: '#' },
+    { title: 'Proposal Presentation', date: 'Aug 2025', status: 'available', url: '#' },
+    { title: 'Progress Presentation I', date: 'Nov 2025', status: 'available', url: '#' },
+    { title: 'Progress Presentation II', date: 'Mar 2026', status: 'available', url: '#' },
+    { title: 'Final Presentation', date: 'Jun 2026', status: 'pending', url: '#' },
   ],
 
   team: [
     {
-      name: 'Haritha Himansha',
+      name: 'Mr. Haritha Himansha',
       id: 'IT22601360',
       role: 'Code Concept Extractor',
       email: 'it22601360@my.sliit.lk',
@@ -174,16 +173,16 @@ const SITE = {
       type: 'member',
     },
     {
-      name: 'Thilina Sandamal',
+      name: 'Mr. Thilina Sandamal',
       id: 'IT22606860',
-      role: 'Skill Assessment & Weakness Detector',
+      role: 'Adaptive Weakness Detector',
       email: 'it22606860@my.sliit.lk',
       initials: 'TS',
       color: '#1a7f4f',
       type: 'member',
     },
     {
-      name: 'Navinda Viraj',
+      name: 'Mr. Navinda Viraj',
       id: 'IT22639226',
       role: 'AI Interview Simulator',
       email: 'it22639226@my.sliit.lk',
@@ -192,9 +191,9 @@ const SITE = {
       type: 'member',
     },
     {
-      name: 'Ashani Hettiarachchi',
+      name: 'Ms. Ashani Hettiarachchi',
       id: 'IT22604194',
-      role: 'Code Refactoring & Risk Analyser',
+      role: 'Code Refactoring & Risk Analyzer',
       email: 'it22604194@my.sliit.lk',
       initials: 'AH',
       color: '#b45309',
@@ -394,10 +393,10 @@ function Hero({ scrollTo }) {
             flexWrap: 'wrap',
           }}>
             {[
-              { value: '0.83', label: 'Macro F1 Score' },
-              { value: '+16.9%', label: 'vs LLM Baseline' },
+              { value: '0.85', label: 'Macro F1 Score' },
+              { value: '+16.4%', label: 'vs LLM Baseline' },
               { value: '4', label: 'AI Components' },
-              { value: 'ECAI\'26', label: 'Conference' },
+              { value: '90.7%', label: 'User Satisfaction' },
             ].map(stat => (
               <div key={stat.label}>
                 <div style={{
@@ -862,7 +861,7 @@ function Contact() {
                 </a>
               ))}
             </div>
-            <div style={{ marginTop: 28, paddingTop: 24, borderTop: '0.5px solid rgba(255,255,255,0.1)' }}>
+            {/* <div style={{ marginTop: 28, paddingTop: 24, borderTop: '0.5px solid rgba(255,255,255,0.1)' }}>
               <a href={SITE.cdapUrl} target="_blank" rel="noopener noreferrer" style={{
                 fontSize: '13px', color: 'rgba(255,255,255,0.4)', transition: 'color 0.2s',
               }}
@@ -871,7 +870,7 @@ function Contact() {
               >
                 CDAP Repository → {SITE.cdapUrl}
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div style={{
@@ -941,7 +940,7 @@ function Footer({ scrollTo }) {
           ))}
         </div>
         <div style={{ fontSize: '12px', textAlign: 'right' }}>
-          © 2025 OptiCode Research Team<br />BSc (Hons) Information Technology, SLIIT
+          © 2026 OptiCode Research Team<br />BSc (Hons) Information Technology, SLIIT
         </div>
       </div>
     </footer>
